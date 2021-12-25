@@ -1,2 +1,27 @@
 # Scala_Analytics_Sub-Methods
- A simple sub-method analytics
+
+A simple sub-method analytics
+
+Scala Part 2Important (Please Read):
+
+●Make sure the files you submit can be processed by just calling scala<<filename.scala>> on the commandline.1Use the templatefiles providedand do notmake any changes to arguments of functions or to any types. You are free to implementany auxiliary function you might need.
+
+●Do not leave any test cases runningin your code becausethis might slow down yourprogram! Comment out test cases before submission, otherwise you might hit a time‑out.
+
+●Do not use any mutable data structuresin your submissions!They are not needed. Thismeans you cannot create new Arrays or ListBuffers, for example.
+
+●Do not use returnin your code! It has a differentmeaning in Scala than in Java. Itchanges the meaning of your program, and you should never use it.
+
+●Donotusevar!This declares a mutable variable.Only use val!●Do not use any parallel collections!No .partherefore!Our testing and markinginfrastructure is not set up for it.
+
+●Also note that the running time of each part will be restricted to amaximum of 30secondson my laptop.DisclaimerAll major OSes, including Windows, have a commandline. So there is no good reason to notdownload Scala, install it and run it on your own computer.
+
+Also note that the running time of each part will be restricted to a maximum of 30 seconds onmy laptop: If you calculate a result once, try to avoid to calculate the result again. Feel free tocopy any code you need from files knight1.scala, knight2.scala and knight3.scala (for Main 4).Hints:For the Core
+
+Part 2: useful operations involving regular expressions:finds all substrings in s according to a regular regular expression reg; useful list operations:.distinctremoving duplicates from a list,.countcounts the number of elements in a list thatsatisfy some condition,.toMaptransfers a list ofpairs into a Map,.sumadds up a list ofintegers,.maxcalculates the maximum of a list.
+
+Determines the similarity between two documents (be they source code or texts in English). Adocument will be represented as a list of strings.
+
+Tasks(1) Implement a function that ‘cleans’ a string by finding all (proper) words in the string. For thisuse the regular expression \w+ for recognising words and the library function findAllIn. The function should return a document (a list of strings). [0.5 Marks](2) In order to compute the overlap between two documents, we associate each document witha Map. This Map represents the strings in a document and how many times these strings occurin the document. A simple (though slightly inefficient) method for counting the number of string‑occurrences in a document is as follows: remove all duplicates from the document; for each ofthese (unique) strings, count how many times they occur in the original document. Return a Mapassociating strings with occurrences. For example:[Mark 1](3) You can think of the Maps calculated under (2) as memory‑efficient representations ofsparse “vectors”. In this subtask you need to implement the product of two such vectors,sometimes also called dot product of twovectors.For this dot product, implement a function that takes two documents (List[String]) as arguments.The function first calculates the (unique) strings in both. For each string, it multiplies thecorresponding occurrences in each document. If a string does not occur in one of thedocuments, then the product for this string is zero. At the end you need to add up all products.For the two documents in (2) the dot product is 7,because[1 Mark](4) Implement first a function that calculates the overlap between two documents, say d1 andd2, according to the formulaSecond, implement a function that calculates the similarity of two strings, by first extracting thesubstrings using the clean function from (1) and then calculating the overlap of the resultingdocuments. [0.5 Marks]
+
+Reference ImplementationLike the C++ part, the Scala part works like this: you push your files to GitHuband receive (after sometimes a long delay) some automated feedback. In theend we will take a snapshot of the submitted files and apply an automatedmarking script to them.In addition, the Scala part comes with reference implementations in form ofjar‑files. This allows you to run any test cases on your own computer. For ex‑ample you can call Scala on the command line with the option‐cp danube.jarand then query any function from the template file. Say you want to find outwhat the function produces: for this you just need to prefix it with the ob‑ject nameM2. If you want to find out what these functions produce for the listList("a", "b", "b"), you would type something like:$ scala ‐cp danube.jarscala> val ratings_url =| """https://nms.kcl.ac.uk/christian.urban/ratings.csv"""scala> M2.get_csv_url(ratings_url)val res0: List[String] = List(1,1,4 ...)HintsUse.split(",").toListfor splitting strings according to commas (similarlyfor the newline character\n),.getOrElse(..,..)allows to query a Map, butalso gives a default value if the Map is not defined, a Map can be ‘updated’ byusing+,.containsand.filtercan test whether an element is included in alist, and respectively filter out elements in a list,.sortBy(_._2)sorts a list ofpairs according to the second elements in the pairs—the sorting is done fromsmallest to highest,.take(n)for taking some elements in a list (takes fewer ifthe list contains less thannelements).2
