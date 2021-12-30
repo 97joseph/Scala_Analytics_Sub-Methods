@@ -28,10 +28,10 @@ val movies_url = """https://nms.kcl.ac.uk/christian.urban/movies.csv"""
 // testcases
 //-----------
 //:
-//val movies = get_csv_url(movies_url)
+val movies = get_csv_url(movies_url)
 
-//ratings.length  // 87313
-//movies.length   // 9742
+ratings.length  // 87313
+movies.length   // 9742
 
 
 
@@ -49,11 +49,11 @@ def process_movies(lines: List[String]) : List[(String, String)] = ???
 
 // testcases
 //-----------
-//val good_ratings = process_ratings(ratings)
-//val movie_names = process_movies(movies)
+val good_ratings = process_ratings(ratings)
+val movie_names = process_movies(movies)
 
-//good_ratings.length   //48580
-//movie_names.length    // 9742
+good_ratings.length   //48580
+movie_names.length    // 9742
 
 
 
@@ -70,17 +70,17 @@ def groupById(ratings: List[(String, String)],
 
 // testcases
 //-----------
-//val ratings_map = groupById(good_ratings, Map())
-//val movies_map = movie_names.toMap
+val ratings_map = groupById(good_ratings, Map())
+val movies_map = movie_names.toMap
 
-//ratings_map.get("414").get.map(movies_map.get(_)) 
-//    => most prolific recommender with 1227 positive ratings
+ratings_map.get("414").get.map(movies_map.get(_)) 
+    => most prolific recommender with 1227 positive ratings
 
-//ratings_map.get("474").get.map(movies_map.get(_)) 
-//    => second-most prolific recommender with 787 positive ratings
+ratings_map.get("474").get.map(movies_map.get(_)) 
+    => second-most prolific recommender with 787 positive ratings
 
-//ratings_map.get("214").get.map(movies_map.get(_)) 
-//    => least prolific recommender with only 1 positive rating
+ratings_map.get("214").get.map(movies_map.get(_)) 
+    => least prolific recommender with only 1 positive rating
 
 
 
@@ -96,11 +96,11 @@ def favourites(m: Map[String, List[String]], mov: String) : List[List[String]] =
 
 // testcases
 //-----------
-// movie ID "912" -> Casablanca (1942)
-//          "858" -> Godfather
-//          "260" -> Star Wars: Episode IV - A New Hope (1977)
+ movie ID "912" -> Casablanca (1942)
+          "858" -> Godfather
+          "260" -> Star Wars: Episode IV - A New Hope (1977)
 
-//favourites(ratings_map, "912").length  // => 80
+favourites(ratings_map, "912").length   => 80
 
 // That means there are 80 users that recommend the movie with ID 912.
 // Of these 80  users, 55 gave a good rating to movie 858 and
@@ -119,10 +119,10 @@ def suggestions(recs: Map[String, List[String]],
 // testcases
 //-----------
 
-//suggestions(ratings_map, "912")
-//suggestions(ratings_map, "912").length  
-// => 4110 suggestions with List(858, 260, 318, 593, ...)
-//    being the most frequently suggested movies
+suggestions(ratings_map, "912")
+suggestions(ratings_map, "912").length  
+ => 4110 suggestions with List(858, 260, 318, 593, ...)
+    being the most frequently suggested movies
 
 
 

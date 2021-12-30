@@ -90,6 +90,8 @@ def groupById(ratings: List[(String, String)],
               m: Map[String, List[String]]) : Map[String, List[String]] = {
   ratings.groupBy(_._1).mapValues(_.map(_._2))
 
+
+
 }
 
 
@@ -99,12 +101,15 @@ val ratings_map =(groupById(good_ratings, Map()) )
 val movies_map = movie_names.toMap
 
 ratings_map.get("414").get.map(movies_map.get(_))
+
     => most prolific recommender with 1227 positive ratings
 
 ratings_map.get("474").get.map(movies_map.get(_))
+
     => second-most prolific recommender with 787 positive ratings
 
 println(ratings_map.get("214").get.map(movies_map.get(_)))
+
     => least prolific recommender with only 1 positive rating
 
 
@@ -132,7 +137,8 @@ def favourites(m: Map[String, List[String]], mov: String) : List[List[String]] =
           "858" -> Godfather
           "260" -> Star Wars: Episode IV - A New Hope (1977)
 
-println( favourites(ratings_map, "912").length ) // => 80
+println( favourites(ratings_map, "912").length ) 
+ => 80
 
 // That means there are 80 users that recommend the movie with ID 912.
 // Of these 80  users, 55 gave a good rating to movie 858 and
