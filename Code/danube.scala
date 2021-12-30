@@ -146,7 +146,7 @@ println( favourites(ratings_map, "912").length ) // => 80
 
 def suggestions(recs: Map[String, List[String]],
                 mov_name: String) : List[String] = {
-  val s = favourites(recs,mov_name).flatten.filter(_!=mov_name).groupBy(identity).mapValues(_.size)//.toList.sortWith(_._2 > _._2).map(_._1)
+  val s = favourites(recs,mov_name).flatten.filter(_!=mov_name).groupBy(identity).mapValues(_.size).toList.sortWith(_._2 > _._2).map(_._1)
   println(s)
   val t = s.toList.sortWith(_._2 > _._2).map(_._1)
   println(s)
